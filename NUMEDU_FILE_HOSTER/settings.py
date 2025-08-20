@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-22ttf3-1ua@si(vg2bc2%871k#mwyj_tziqibrbyy7!)2p^r5$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['numedu.onrender.com']
+ALLOWED_HOSTS = ['numedu.onrender.com', 'http://localhost:52503/']
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -55,7 +56,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'NUMEDU_FILE_HOSTER.urls'
@@ -130,11 +130,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
-# Autoriser ton site Flutter
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:52373",  # pour le debug local
-    "https://ton-domaine-web.com",  # le domaine où ton app sera déployée
-]
+CORS_ALLOW_ALL_ORIGINS = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
